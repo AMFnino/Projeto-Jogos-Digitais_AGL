@@ -1,6 +1,3 @@
-#Grupo AGL
-
-
 import pygame, sys
 from pygame.locals import *
 import random, time
@@ -34,11 +31,13 @@ furou_a_dieta = font.render("THE DIET IS OVER", True, ORANGE)
 #Criando a janela do jogo
 DISPLAYSURF = pygame.display.set_mode((400,600))
 DISPLAYSURF.fill(WHITE)
-pygame.display.set_caption("Game Project")
+pygame.display.set_caption("Game Project - Grupo AGL")
  
 #Música de fundo
 mixer.music.load("Cyberpunk Moonlight Sonata.mp3")
 mixer.music.play(-1)
+
+
  
 class Enemy(pygame.sprite.Sprite):
       def __init__(self):
@@ -46,7 +45,8 @@ class Enemy(pygame.sprite.Sprite):
         self.image = pygame.image.load("pizza.png")
         self.image = pygame.transform.scale(self.image, [88, 113])
         self.surf = pygame.Surface((42, 70))
-        self.rect = self.surf.get_rect(center = (random.randint(40, SCREEN_WIDTH-294), 0))
+        self.rect = self.surf.get_rect(center = (random.randint(40, SCREEN_WIDTH-294)
+                                                 , 0))
  
       def move(self):
         global SCORE
@@ -54,7 +54,7 @@ class Enemy(pygame.sprite.Sprite):
         if (self.rect.top > 600):
             SCORE += 1
             self.rect.top = 0
-            self.rect.center = (random.randint(40, SCREEN_WIDTH - 294), 0)
+            self.rect.center = (random.randint(40, SCREEN_WIDTH-294), 0)
  
 class Enemy2(pygame.sprite.Sprite):
       def __init__(self):
@@ -62,14 +62,15 @@ class Enemy2(pygame.sprite.Sprite):
         self.image = pygame.image.load("burger.png")
         self.image = pygame.transform.scale(self.image, [88, 113])
         self.surf = pygame.Surface((42, 70))
-        self.rect = self.surf.get_rect(center = (random.randint(146, SCREEN_WIDTH-188), 0))
+        self.rect = self.surf.get_rect(center = (random.randint(146, SCREEN_WIDTH-188)
+                                                 , 0))
       def move(self):
         global SCORE
         self.rect.move_ip(0,SPEED)
         if (self.rect.top > 600):
             SCORE += 1
             self.rect.top = 0
-            self.rect.center = (random.randint(146, SCREEN_WIDTH-188), 0) 
+            self.rect.center = (random.randint(146, SCREEN_WIDTH-188), 0)
 
 class Enemy3(pygame.sprite.Sprite):
       def __init__(self):
@@ -77,14 +78,15 @@ class Enemy3(pygame.sprite.Sprite):
         self.image = pygame.image.load("Pataepollo.png")
         self.image = pygame.transform.scale(self.image, [88, 113])
         self.surf = pygame.Surface((42, 70))
-        self.rect = self.surf.get_rect(center = (random.randint(252,SCREEN_WIDTH-40), 0))
+        self.rect = self.surf.get_rect(center = (random.randint(252,SCREEN_WIDTH-40)
+                                                 , 0))
       def move(self):
         global SCORE
         self.rect.move_ip(0,SPEED)
         if (self.rect.top > 600):
             SCORE += 1
             self.rect.top = 0
-            self.rect.center = (random.randint(252, SCREEN_WIDTH - 40), 0) 
+            self.rect.center = (random.randint(252,SCREEN_WIDTH-40), 0) 
                                              
 class Player(pygame.sprite.Sprite):
     def __init__(self):
@@ -141,23 +143,31 @@ enemies = pygame.sprite.Group()
 enemies.add(E1)
 enemies.add(E2)
 enemies.add(E3)
+
 all_sprites = pygame.sprite.Group()
 all_sprites.add(P1)
-all_sprites.add(E1)
-all_sprites.add(E2)
-all_sprites.add(E3)
- 
+
 #Adding a new User event 
 INC_SPEED = pygame.USEREVENT + 1
 pygame.time.set_timer(INC_SPEED, 1000)
  
 #Game Loop
 while True:
-       
+
+    #Fase 1 do jogo
+    if SCORE == 0:
+     all_sprites.add(E1)
+    #Fase 2 do jogo
+    if SCORE > 2:
+     all_sprites.add(E2)
+    #Fase 3 do jogo
+    if SCORE > 5:
+     all_sprites.add(E3)
+
     #Cycles through all occurring events   
     for event in pygame.event.get():
         if event.type == INC_SPEED:
-              SPEED += 0.1     
+              SPEED += 0.2     
         if event.type == QUIT:
             pygame.quit()
             sys.exit()
