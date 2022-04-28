@@ -185,11 +185,8 @@ while True:
     #Fase 3 do jogo
     if SCORE > 5:
      all_sprites.add(E3)
-    #Fase 4 do jogo
-    if SCORE > 10:
-     all_sprites.remove(P1)
-     all_sprites.remove(E1,E2)
-     all_sprites.add(P2)
+
+    
     
     
 
@@ -218,6 +215,11 @@ while True:
     if pygame.sprite.spritecollideany(P1, enemies):
           pygame.mixer.Sound('bzzzt.wav').play()
           time.sleep(2)
+	all_sprites.add(P2)
+	if pygame.sprite.spritecollideany(P2, enemies):
+          pygame.mixer.Sound('bzzzt.wav').play()
+          time.sleep(2)
+	  
                     
           DISPLAYSURF.fill(BLACK)
           DISPLAYSURF.blit(furou_a_dieta, (55,250))
