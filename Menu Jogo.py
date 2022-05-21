@@ -17,7 +17,7 @@ from pygame_menu.examples import create_example_window
 from typing import Tuple, Any
 import jogo
 
-surface = create_example_window('MENU - GRUPO AGL', (400, 600))
+surface = create_example_window('Game - GRUPO AGL', (400, 600))
 
 
 def start_the_game() -> None:
@@ -34,7 +34,7 @@ menu = pygame_menu.Menu(
     width=400
 )
 
-user_name = menu.add.text_input('Nome: ', default='       ', maxchar=10)
+user_name = menu.add.text_input('Nome: ', default='', maxchar=12)
 user_name = menu.add.text_input('Idade: ', default='', maxchar=2)
 menu.add.selector('País: ', [('Brasil', 1), ('Argentina', 2), ('Chile', 3), ('Uruguai', 4), ('Paraguai', 5), ('Outro', 6)]) #, onchange=set_difficulty)
 menu.add.button('Jogar', start_the_game)
