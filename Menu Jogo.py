@@ -17,7 +17,7 @@ from pygame_menu.examples import create_example_window
 from typing import Tuple, Any
 import jogo
 
-surface = create_example_window('Game - GRUPO AGL', (400, 600))
+surface = create_example_window('JUNK FOOD CHALLENGE - GRUPO AGL', (400, 600))
 
 
 def start_the_game() -> None:
