@@ -170,7 +170,7 @@ class Enemy6(pygame.sprite.Sprite):
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__() 
-        self.image = pygame.image.load("skeleton-run_2.png")
+        self.image = pygame.image.load("Flavio_Sedentario.png")
         self.image = pygame.transform.scale(self.image, [64, 106])
         self.surf = pygame.Surface((40, 75))
         self.rect = self.surf.get_rect(center = (160, 520))
@@ -187,7 +187,7 @@ class Player(pygame.sprite.Sprite):
 class Player2(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__() 
-        self.image = pygame.image.load("run0.png")
+        self.image = pygame.image.load("Flavio_Saudavel.png")
         self.image = pygame.transform.scale(self.image, [94, 126])
         self.surf = pygame.Surface((40, 75))
         self.rect = self.surf.get_rect(center = (160, 520))
@@ -275,13 +275,13 @@ def play():
     if SCORE > 4:
      all_sprites.add(E3)
     #Fase 4 do jogo
-    if SCORE > 8:
+    if SCORE > 9:
      all_sprites.remove(P1)
      all_sprites.remove(E1,E2,E3)
-     all_sprites.add(P2, E4)
+     all_sprites.add(P2, E4, E5)
     #Fase 5 do jogo
-    if SCORE > 10:
-     all_sprites.add(E5, E6)
+    if SCORE > 12:
+     all_sprites.add(E6)
     
     
 
